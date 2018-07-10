@@ -29,6 +29,7 @@ The main functions exported by "MonodromyMixing" can be used as follows:
 
 
 Preferred (but not foolproof) way to get reasonable "p0" & corresponding "sols" from P:
+
         needsPackage "MonodromySolver"
         (V,npaths)=monodromySolve P
         p0=V.BasePoint
