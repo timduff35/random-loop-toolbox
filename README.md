@@ -21,10 +21,10 @@ The main functions exported by "MonodromyMixing" can be used as follows:
   * p0, an object of class ["Point"](https://faculty.math.illinois.edu/Macaulay2/doc/Macaulay2..*1.10/share/doc/Macaulay2/NAGtypes/html/___Point.html), gives an initial base point in the parameter space for seeding the solver. 
   * sols, a list of all solutions to P specialized at p0.
   * Preferred (but not foolproof) way to get reasonable "p0" & corresponding "sols" from P:
-        needsPackage "MonodromySolver"
-        (V,npaths)=monodromySolve P
-        p0=V.BasePoint
-        sols=points V.PartialSols
+              needsPackage "MonodromySolver"
+	      (V,npaths)=monodromySolve P
+              p0=V.BasePoint
+              sols=points V.PartialSols
   * The most useful options are "MixLimit" and "Iterations." In each iteration, we start from a random base point in the parameter space and collect statistics obtained by concatenating "MixLimit" many loops based at this point. 
   * returns a mutable list with elements of the form (Number of loops concatenated, "OK"/"NA", permutation), where the permutation is represented as a mutable list and "NA" indicates a numerical error (ie. path..*jumping.)
 2. simulate(P,p0,sols,filename)
