@@ -20,16 +20,18 @@ The main functions exported by "MonodromyMixing" can be used as follows:
   * P should be a linearly-parametrized family of polynomial systems. In Macaulay2, this may be represented by an object of class "PolySystem" over a ring whose variables are the parameters defining the family, as in the examples provided in the MonodromySolver [documentation](http://www2.macaulay2.com/Macaulay2/doc/Macaulay2..*1.11/share/doc/Macaulay2/MonodromySolver/html/_solve__Family.html).
   * p0, an object of class ["Point"](https://faculty.math.illinois.edu/Macaulay2/doc/Macaulay2..*1.10/share/doc/Macaulay2/NAGtypes/html/___Point.html), gives an initial base point in the parameter space for seeding the solver. 
   * sols, a list of all solutions to P specialized at p0.
-  * Preferred (but not foolproof) way to get reasonable "p0" & corresponding "sols" from P:
-              needsPackage "MonodromySolver"
-	      (V,npaths)=monodromySolve P
-              p0=V.BasePoint
-              sols=points V.PartialSols
   * The most useful options are "MixLimit" and "Iterations." In each iteration, we start from a random base point in the parameter space and collect statistics obtained by concatenating "MixLimit" many loops based at this point. 
   * returns a mutable list with elements of the form (Number of loops concatenated, "OK"/"NA", permutation), where the permutation is represented as a mutable list and "NA" indicates a numerical error (ie. path..*jumping.)
 2. simulate(P,p0,sols,filename)
   * same as above, but with a string "filename", with output to be written to "filename.csv"
 3. simulateModel(n,iters,mixLimit)
   * Simulates a random walk on the symmetric group S_n for comparison purposes. Currently, either a stataionary (ie uniform) random walk (triggered by setting option RandMethod=>"Unif") or a multiStep random walk with binomial distribution B(n,p). 
+
+
+Preferred (but not foolproof) way to get reasonable "p0" & corresponding "sols" from P:
+              needsPackage "MonodromySolver"
+	      (V,npaths)=monodromySolve P
+              p0=V.BasePoint
+              sols=points V.PartialSols
 
 Numerous other functions are currently exported, but undocumented. This may change as the project progresses.
